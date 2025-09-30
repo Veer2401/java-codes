@@ -1,6 +1,6 @@
 
-
-# Java Projects (Second Year) 💻
+<img src="https://skillicons.dev/icons?i=java" />
+# Java Projects (Second Year) 💻 
 
 This repository contains a collection of Java assignments and personal projects developed during the second year of engineering. Each project targets a specific domain, such as management systems, object-oriented design, or interface implementation, showcasing core concepts in Java and software engineering.
 
