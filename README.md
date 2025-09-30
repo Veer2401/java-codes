@@ -25,6 +25,19 @@ This repository contains a collection of Java assignments and personal projects 
 - File Operations: Created supplemental utilities for file input/output, enhancing understanding of Java streams.
 - Database Connectivity: Added JDBC-based project connecting Java with Oracle Database for executing SQL queries.
 
+## Prerequisites
+
+**For JDBC Database Connector:**
+- Oracle Database must be installed and running (or use a cloud Oracle DB service).
+- Correct username, password, and service name must be set in the code (`"sys as sysdba"`, `"Veer@123"`, and `"orcl"` as per the sample).
+- Oracle JDBC driver (`ojdbc8.jar` or compatible) must be included in your classpath.
+- The required table (e.g., `airlines`) exists in your database.
+
+Example command to run with classpath set:
+javac -cp .:ojdbc8.jar JDBC_Con.java
+java -cp .:ojdbc8.jar JDBC_Con
+
+
 ## Roadmap
 
 - Expand existing systems with more robust features (database integration, GUI).
@@ -45,9 +58,8 @@ This repository contains a collection of Java assignments and personal projects 
 ## How to Run
 
 - Each `.java` file contains a `main` method for standalone execution.
-- Compile using: javac FileName.java
+- Compile using:  
+javac FileName.java
 
-- - Run using:  
+- Run using:  
 java FileName
-
-
