@@ -16,6 +16,7 @@ This repository contains a collection of Java assignments and personal projects 
 | Railway Reservation      | Abstracted booking and ticketing workflow for train ticket system (with user login module).        | Abstract base class for booking, reservation logic, quota, multi-step ticket booking |
 | File I/O Utility         | Utilities for working with file operations using Java streams.                                     | Reading/Writing files, demonstration of file handling concepts |
 | JDBC Database Connector  | Demonstrates Java Database Connectivity (JDBC) with Oracle Database for fetching table records.    | Oracle JDBC driver, connection setup, SQL query execution, ResultSet iteration |
+| GUI Registration Form    | A simple event registration form using Java Swing for graphical user interface design.             | Name, Email, Age, Gender, and Domain entry fields, validation, user feedback via dialog popups, GUI-based input and reset functionality |
 
 ## Progress
 
@@ -24,6 +25,7 @@ This repository contains a collection of Java assignments and personal projects 
 - Booking Systems: Developed two booking systems (cinema tickets & railway reservation) using multi-threading and modular design.
 - File Operations: Created supplemental utilities for file input/output, enhancing understanding of Java streams.
 - Database Connectivity: Added JDBC-based project connecting Java with Oracle Database for executing SQL queries.
+- GUI Development: Built a registration form project using Java Swing for graphical user input, featuring text fields, radio buttons for gender selection, form validation, and dialog-based user feedback.
 
 ## Prerequisites
 
