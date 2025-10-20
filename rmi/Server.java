@@ -5,18 +5,16 @@ import java.rmi.registry.LocateRegistry;
 
 public class Server {
     public static void main(String[] args) {
-
-        
-        try {
+        try{
             LocateRegistry.createRegistry(1099);
 
-            HelloImplementation obj = new HelloImplementation();
+            ImplementCalculation obj = new ImplementCalculation();
 
-            Naming.rebind("HelloService", obj);
+            Naming.rebind("Calculation", obj);
 
-            System.out.println("Server is ready and 'Service' is bounded to register");
-        } catch(Exception e){
-            System.out.println("Server Error! " + e);
+            System.out.println("Server is ready!");
+        }catch(Exception e){
+            System.out.println(e.getMessage());
         }
     }
 }
