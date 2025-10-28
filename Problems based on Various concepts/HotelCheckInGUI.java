@@ -1,71 +1,97 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 
-public class HotelCheckInGUI extends JFrame implements ActionListener {
+public class HotelGUI extends JFrame implements ActionListener {
 
-    JLabel lblName, lblEmail, lblContactNumber;
-    JTextField txtName, txtEmail, txtContactNumber;
+    JTextField txtName, txtEmail, txtContact;
+    JRadioButton rbMale, rbFemale;
+    ButtonGroup genderGroup;
     JButton btnSubmit;
 
-    public HotelCheckInGUI(){
-        setTitle("Hotel Check In");
+    public HotelGUI() {
+        setTitle("HOTEL CHECK IN");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(null);
+        setLayout(new BorderLayout(15, 15)); // more spacing between sections
 
-        lblName = new JLabel("Name: ");
-        lblEmail = new JLabel("Email: ");
-        lblContactNumber = new JLabel("Contact No: ");
+        // === MAIN FORM PANEL ===
+        JPanel formPanel = new JPanel(new GridLayout(3, 2, 15, 15)); // bigger gaps between rows/cols
+        formPanel.setBorder(BorderFactory.createEmptyBorder(30, 40, 20, 40)); // top, left, bottom, right padding
 
-        txtName = new JTextField();
-        txtEmail = new JTextField();
-        txtContactNumber = new JTextField();
+        // Name
+        formPanel.add(new JLabel("Name:"));
+        txtName = new JTextField(20);
+        formPanel.add(txtName);
 
+        // Email
+        formPanel.add(new JLabel("Email:"));
+        txtEmail = new JTextField(20);
+        formPanel.add(txtEmail);
+
+        // Contact Number
+        formPanel.add(new JLabel("Contact Number:"));
+        txtContact = new JTextField(20);
+        formPanel.add(txtContact);
+
+        // === GENDER PANEL BELOW ===
+        JPanel genderPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 15, 10)); // horizontal + vertical gap
+        genderPanel.setBorder(BorderFactory.createTitledBorder("Select Gender"));
+
+        rbMale = new JRadioButton("Male");
+        rbFemale = new JRadioButton("Female");
+
+        genderGroup = new ButtonGroup();
+        genderGroup.add(rbMale);
+        genderGroup.add(rbFemale);
+
+        genderPanel.add(rbMale);
+        genderPanel.add(rbFemale);
+
+        // === SUBMIT BUTTON ===
         btnSubmit = new JButton("Submit");
-
-        lblName.setBounds(30, 30, 80, 25);
-        txtName.setBounds(120, 30, 150, 25);
-
-        lblEmail.setBounds(30, 70, 80, 25);
-        txtEmail.setBounds(120, 70, 150, 25);
-
-        lblContactNumber.setBounds(30, 110, 110, 25);
-        txtContactNumber.setBounds(140, 110, 150, 25);
-
-        btnSubmit.setBounds(100, 160, 100, 30);
-
-        add(lblName); add(txtName);
-        add(lblEmail); add(txtEmail);
-        add(lblContactNumber); add(txtContactNumber);
-        add(btnSubmit);
-
+        btnSubmit.setPreferredSize(new Dimension(100, 40)); // larger button
         btnSubmit.addActionListener(this);
 
-        setSize(600,600);
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 20, 0));
+        buttonPanel.add(btnSubmit);
 
+        // === ADD TO FRAME ===
+        add(formPanel, BorderLayout.NORTH);
+        add(genderPanel, BorderLayout.CENTER);
+        add(buttonPanel, BorderLayout.SOUTH);
+
+        pack();
+        setSize(400, 350); // give a default comfortable window size
+        setLocationRelativeTo(null); // center on screen
         setVisible(true);
-        setLocationRelativeTo(null);
     }
 
-    public void actionPerformed(ActionEvent e){
+    // === ACTION HANDLER ===
+    @Override
+    public void actionPerformed(ActionEvent e) {
         String name = txtName.getText().trim();
         String email = txtEmail.getText().trim();
-        String contact = txtContactNumber.getText().trim();
+        String contact = txtContact.getText().trim();
 
-        if(name.isEmpty() || email.isEmpty() || contact.isEmpty()){
+        String gender = "";
+        if (rbMale.isSelected()) gender = "Male";
+        else if (rbFemale.isSelected()) gender = "Female";
+
+        if (name.isEmpty() || email.isEmpty() || contact.isEmpty() || gender.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill all the details!");
-            return;
+        } else {
+            JOptionPane.showMessageDialog(this,
+                    "Booking Confirmed!\n\n" +
+                            "Name: " + name +
+                            "\nEmail: " + email +
+                            "\nContact No: " + contact +
+                            "\nGender: " + gender);
         }
-
-        JOptionPane.showMessageDialog(this, 
-        "Booking Confirmed!\n\n" +
-        "Name: " + name + 
-        "\nEmail: " + email + 
-        "\nContact No: " + contact);
     }
 
+    // === MAIN ===
     public static void main(String[] args) {
-        new HotelCheckInGUI();
+        SwingUtilities.invokeLater(() -> new HotelGUI());
     }
-
-    
 }
